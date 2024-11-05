@@ -30,6 +30,8 @@ inputs:
   password:
     description: The password to authenticate with.
     required: true
+  group:
+    description: The group this database belongs to, used for UI grouping.
   agent-id:
     description: The id of the agent this database should use to connect
   ssl:
@@ -62,6 +64,7 @@ runs:
               "adapter": "${{ inputs.adapter }}",
               "username": "${{ inputs.username }}",
               "password": "${{ inputs.password }}",
+              "group": "${{ inputs.group }}",
               "agent_id": "${{ inputs.agent-id }}",
               "ssl": "${{ inputs.ssl }}",
               "ssl_ca_cert": "${{ inputs.ssl_ca_cert }}",
