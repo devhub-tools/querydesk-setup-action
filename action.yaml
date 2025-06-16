@@ -7,7 +7,7 @@ branding:
 
 inputs:
   api-key:
-    description: API key from settings on https://app.devhub.tools
+    description: API key from settings in your installation.
     required: true
   id:
     description: The id to assign to this database connection. The same id must be passed in subsequent requests to update/delete this connection.
@@ -22,7 +22,7 @@ inputs:
     description: The name of the database to connect on.
     required: true
   adapter:
-    description: The adapter to use to establish the connection. Currently only `postgres` and `mysql` are supported, but  sql server is on the roadmap.
+    description: The adapter to use to establish the connection. Currently only `postgres`, `mysql`, and `clickhouse` are supported.
     required: true
   username:
     description: The username to authenticate with.
@@ -52,7 +52,7 @@ runs:
     - name: Setup Database Client
       shell: bash
       run: |
-        curl -X PUT https://${{ inputs.host }}/querydesk/v1/databases/setup \
+        curl -X PUT https://${{ inputs.host }}/api/v1/querydesk/databases/setup \
           -H "content-type: application/json" \
           -H "x-api-key: ${{ inputs.api-key }}" \
           --fail \
